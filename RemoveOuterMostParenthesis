@@ -1,0 +1,26 @@
+So the idea is to make a counter variable and start traverse from start if the count is 0 we won't add the parenthesis into the ans and if we found '(' then we do counter++
+and if we found ')" then counter--
+
+
+class Solution {
+public:
+   string removeOuterParentheses(string s) {
+    int counter = 0; // Track depth of parentheses
+    string ans = "";
+    for (char ch : s) {
+        if (ch == '(') {
+            if (counter > 0) { // Skip the outermost '('
+                ans.push_back(ch);
+            }
+            counter++;
+        } else if (ch == ')') {
+            counter--;
+            if (counter > 0) { // Skip the outermost ')'
+                ans.push_back(ch);
+            }
+        }
+    }
+    return ans;
+}
+
+};
