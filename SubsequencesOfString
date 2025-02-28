@@ -1,0 +1,22 @@
+#include <bits/stdc++.h> 
+void solve(string str,int idx,string temp, vector<string>&ans){
+	if(idx >= str.size()){
+		if(temp.size() == 0){
+			return;
+		}
+		ans.push_back(temp);
+		return;
+	}
+	solve(str,idx+1,temp,ans);
+	char ch = str[idx];
+	temp.push_back(ch);
+	solve(str,idx+1,temp,ans);
+	
+}
+vector<string> subsequences(string str){
+	string temp ="";
+	vector<string>ans;
+	solve(str,0,temp,ans);
+	return ans;
+	
+}
